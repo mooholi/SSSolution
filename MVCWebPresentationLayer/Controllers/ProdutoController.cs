@@ -41,8 +41,6 @@ namespace MVCWebPresentationLayer.Controllers
 
                 return View();
             }
-
-
             return View();
         }
 
