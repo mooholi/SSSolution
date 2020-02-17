@@ -48,12 +48,15 @@
     <script type="text/javascript">
 
         $('#BotaoEnviar').click(function (e) {
+
+            //var descrição document.getElementById("Descricao").value;
             var sucesso = true;
             var descricao = $("#Descricao").val();
             var preco = $("#Preco").val();
             var cor = $("#Cor").val();
 
             if (descricao == "") {
+                //document.getElementById("erroDescricao").innerHTML = "A descrição deve ser informada";
                 $("#erroDescricao").html("A descrição deve ser informada");
                 sucesso = false;
             }
