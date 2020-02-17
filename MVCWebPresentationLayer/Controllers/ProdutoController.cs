@@ -36,7 +36,10 @@ namespace MVCWebPresentationLayer.Controllers
             catch (Exception ex)
             {
                 //Se chegou aqui, o método Cadastrar do MockBLL deu erro :(
+                ViewBag.MensagemErro = ex.Message;
+                //Retorna a mesma tela que o usuário estava 
 
+                return View();
             }
 
 

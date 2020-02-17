@@ -36,6 +36,13 @@
         </div>
     </div>
 
+    @if (ViewBag.MensagemErro != null)
+    {
+        <div class="col-md-10">
+            <span class="text-danger">@ViewBag.MensagemErro</span>
+        </div>
+    }
+
     <input name="BotaoEnviar" id="BotaoEnviar" type="submit" value="Enviar" />
     <button style="margin-left: 5px;" class="red">Limpar</button>
 </form>
