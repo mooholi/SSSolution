@@ -16,6 +16,10 @@ namespace MVCWebPresentationLayer.Mock
             {
                 throw new Exception("Erro no cadastro de clientes.");
             }
+            else
+            {
+                throw new Exception("Cliente cadastrado com sucesso.");
+            }
         }
     }
 }
