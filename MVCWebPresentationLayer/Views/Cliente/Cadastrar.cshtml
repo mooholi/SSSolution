@@ -72,11 +72,11 @@
                 </div>
             </div>
         }
-        else
+        @if(ViewBag.Sucesso != null)
         {
             <div class="form-group">
                 <div class="col-md-10">
-                    <span class="text-danger" id="sucessoCadastro" name="sucessoCadastro"></span>
+                    <span class="text-success">@ViewBag.Sucesso</span>
                 </div>
             </div>
         }
@@ -93,6 +93,11 @@
 
     <script type="text/javascript">
 
+        //Este evento será disparado quando o DOM (Document Object Model) for carregado.
+        $(document).ready(function () { 
+        var $seuCampoCpf = $("#CPF");
+        $seuCampoCpf.mask('000.000.000-00', {reverse: true});
+        
         function validateEmail(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
@@ -170,7 +175,9 @@
             else {
                 $("erroConfereSenha").html("");
             }
-
+            if (!Sucesso) {
+                e.preventDefault();
+            }
 
         });
 

@@ -128,7 +128,7 @@
     </Compile>
     <Compile Include="Mock\ClienteMockBLL.cs" />
     <Compile Include="Mock\ProdutoMockBLL.cs" />
-    <Compile Include="Models\ClienteViewModel.cs" />
+    <Compile Include="Models\ClienteInsertViewModel.cs" />
     <Compile Include="Models\ProdutoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -153,6 +153,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MVCWebPresentationLayer.Models
 {
-    public class ClienteViewModel
+    public class ClienteInsertViewModel
     {
         public int ID { get; set; }
         public string Nome { get; set; }
