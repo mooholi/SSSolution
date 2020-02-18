@@ -37,7 +37,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">Data de Nascimento</label>
         <div class="col-md-10">
-            <input class="form-control" type="date" name="Data de Nascimento" id="DataNascimento" />
+            <input class="form-control" type="date" name="DatadeNascimento" id="DataNascimento" />
             <label class="mensagemErro"></label>
             <span class="text-danger" id="erroDataNascimento" name="erroDataNascimento"></span>
 
@@ -57,9 +57,9 @@
     <div class="form-group">
         <label class="control-label col-md-2">Confirmar Senha</label>
         <div class="col-md-10">
-            <input class="form-control" type="password" name="Confirmar Senha" id="ConfirmarSenha" />
+            <input class="form-control" type="password" name="ConfirmarSenha" id="ConfirmarSenha" />
             <label class="mensagemErro"></label>
-            <span class="text-danger" id="erroConfirmarSenha" name="erroConfirmar Senha"></span>
+            <span class="text-danger" id="erroConfirmarSenha" name="erroConfirmarSenha"></span>
         </div>
     </div>
 
@@ -71,7 +71,14 @@
                     <span class="text-danger">@ViewBag.MensagemErro</span>
                 </div>
             </div>
-
+        }
+        else
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span class="text-danger" id="sucessoCadastro" name="sucessoCadastro"></span>
+                </div>
+            </div>
         }
         <div class="form-group">
             <div class=" col-md-10">
@@ -81,3 +88,96 @@
         </div>
     </div>
 </form>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        $('#BotaoEnviar').click(function (e) {
+
+            //var descricao document.getElementById("Descricao").value;
+            var sucesso = true;
+            var nome = $("#Nome").val();
+            var cpf = $("#CPF").val().replace(/[^0-9]/g, '');
+            var email = $("#Email").val();
+            var dataNascimento = $("#DataNascimento").val();
+            var senha = $("#Senha").val();
+            var confirmarSenha = $("#ConfirmarSenha").val();
+
+            //Validações em JQuery(mais fácil de programar)
+            if (nome == "") {
+                //document.getElementById("erroDescricao").innerHTML = "A descrição deve ser informada";
+                $("#erroNome").html("O nome deve ser informado.");
+                sucesso = false;
+            }
+            else if (nome.length < 5 || nome.length > 40) {
+                $("#erroNome").html("O nome deve conter entre 5 e 40 caracteres.")
+            }
+            else {
+                $("#erroNome").html("");
+            }
+
+            if (cpf == "") {
+                $("#erroCPF").html("O CPF deve ser informado.");
+                sucesso = false;
+            }
+            else if (cpf.length != 11) {
+                $("erroCpf").html("O CPF deve conter 14 caracteres.")
+            }
+            else {
+                $("#erroCPF").html("");
+            }
+
+            if (dataNascimento == "") {
+                $("erroDataNascimento").html("A Data de Nascimento deve ser informada.")
+            }
+            else {
+                $("erroDataNascimento").html("");
+            }
+
+            if (email == "") {
+                $("#erroEmail").html("O Email deve ser informado.");
+                sucesso = false;
+            }
+            else if (!validateEmail(email)) {
+                $("#erroEmail").html("Digite um endereço de email válido.");
+                sucesso = false;
+            }
+            else {
+                $("#erroEmail").html("");
+            }
+
+            if (senha == "") {
+                $("#erroSenha").html("A senha deve ser informada.");
+                sucesso = false;
+            }
+            else if (senha.length < 6 || senha.length > 16) {
+                $("#erroSenha").html("A senha deve conter entre 6 e 16 caracteres.");
+                sucesso = false;
+            }
+            else {
+                $("erroSenha").html("");
+            }
+
+            if (confirmarSenha == "" || confirmarSenha != senha) {
+                $("#erroConfirmarSenha").html("As senhas não conferem.")
+            }
+            else {
+                $("erroConfereSenha").html("");
+            }
+
+            if (!sucesso) {
+                e.preventDefault()
+            }
+            else {
+                $("sucessoCadastro").html("Cliente cadastrado com sucesso.")
+            }
+        });
+
+    </script>
+}

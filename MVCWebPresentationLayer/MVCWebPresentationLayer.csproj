@@ -126,6 +126,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mock\ClienteMockBLL.cs" />
     <Compile Include="Mock\ProdutoMockBLL.cs" />
     <Compile Include="Models\ClienteViewModel.cs" />
     <Compile Include="Models\ProdutoViewModel.cs" />

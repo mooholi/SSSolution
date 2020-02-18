@@ -1,4 +1,5 @@
-﻿using MVCWebPresentationLayer.Models;
+﻿using MVCWebPresentationLayer.Mock;
+using MVCWebPresentationLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,27 @@ namespace MVCWebPresentationLayer.Controllers
         [HttpPost]
         public ActionResult Cadastrar(ClienteViewModel viewModel)
         {
+
+            //O objeto ViewModel virá preenchido de acordo com os names dos inputs
+            //do form que teve seu botão clicado
+            ClienteMockBLL mockBLL = new ClienteMockBLL();
+            try
+            {
+                //Esta linha pode lançar uma exception , logo ela 
+                // deve estar entre um bloco try
+                mockBLL.Cadastrar(viewModel);
+
+                //Se chegou e não deu Exception, redirecione o usuário para a página inicial! :)
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                //Se chegou aqui, o método Cadastrar do MockBLL deu erro :(
+                ViewBag.MensagemErro = ex.Message;
+                //Retorna a mesma tela que o usuário estava 
+
+                return View();
+            }
             return View();
         }
 
