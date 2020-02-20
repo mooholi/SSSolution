@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClienteService.cs" />
+    <Compile Include="Impl\ClienteService.cs" />
     <Compile Include="Interfaces\IClienteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,6 +61,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{B9307FCD-CD1F-417A-8FF8-9DDFF6BBFCE9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{45C6CEFA-8463-4F4A-BF0B-78C9C93456BD}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{DE7221D8-07A3-4327-8E52-7D12E3145E8E}</Project>
       <Name>DTO</Name>
